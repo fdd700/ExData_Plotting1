@@ -7,7 +7,6 @@ dt = read.table("household_power_consumption.txt",
                                                 nrow = 1, header = TRUE, sep=";")))
 dts=subset(dt,as.Date(dt$Date,"%d/%m/%Y") %in% as.Date(c("2007-02-01","2007-02-02")))
 dts$DateTime = as.POSIXct(paste(as.Date(dt$Date,"%d/%m/%Y"), dts$Time), format="%Y-%m-%d %H:%M:%S")
-for (i in 7:10) dts[,i]=as.numeric(dts[,i])
 #I know the original has a transparent backgrpound, but looks too ugly on my screeen 
 png("plot3.png", width = 504, height = 504, bg = "white")
 plot(dts$DateTime,dts[,7],type="l",xlab="",ylab="Energy sub metering")
